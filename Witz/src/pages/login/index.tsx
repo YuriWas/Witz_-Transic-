@@ -13,7 +13,7 @@ import {
 
 import { style } from "./style";
 
-import Logo from '../../assets/logo_login.png'
+import Logo from '../../assets/Logo_desenho.png'
 
 // @ts-ignore
 import { MaterialIcons, Octicons } from '@expo/vector-icons';
