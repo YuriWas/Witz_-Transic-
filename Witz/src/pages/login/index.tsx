@@ -1,98 +1,71 @@
 import React, { useState } from "react";
-
 import {
     Text,
     View,
     Image,
     TextInput,
-    TouchableOpacity,
-    Alert,
-    ActivityIndicatorBase,
-    ActivityIndicator
-} from 'react-native'
+    TouchableOpacity
+} from 'react-native';
 
 import { style } from "./style";
-
-import Logo from '../../assets/Logo_desenho.png'
+import Logo from '../../assets/Logo_desenho.png';
 
 // @ts-ignore
-import { MaterialIcons, Octicons } from '@expo/vector-icons';
-
+import { MaterialIcons } from '@expo/vector-icons';
 import { themas } from "../../global/themes";
 
-export default function Login(){
-    const[email, setemail] = useState('');
-    const[password, setpassoword] = useState('');
-    const[loading, setloading] = useState(false);
+export default function Login() {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
-    async function getLogin(){
-        try{
-            setloading(true)
-
-            if(!email || !password){
-                return Alert.alert ('Atenção', 'Informe os campos obrigatórios!')
-            }
-
-            setTimeout(()=>{
-                if(email == 'hermesonalessandro@gmail.com' && password == '123456'){
-                    Alert.alert('Logado com sucesso!')
-                }else{
-                    Alert.alert('Usuário não encontrado!')
-                }
-                setloading(false)
-            },3000)
-
-        }catch(error){
-            console.log(error)
-        }
-    }
-
-    return(
+    return (
         <View style={style.container}>
             <View style={style.boxTop}>
-               <Image
-               source={Logo}
-               style={style.logo}
-               resizeMode="contain"
-               /> 
-               <Text style={style.text}>Bem vindo de volta!</Text>
+                <View style={{ alignItems: 'center' }}>
+                    <Image
+                        source={Logo}
+                        style={style.logo}
+                        resizeMode="contain"
+                    />
+                    <Text style={style.text}>Bem vindo de volta!</Text>
+                </View>
             </View>
 
             <View style={style.boxMid}>
                 <Text style={style.titleInput}>ENDEREÇO DE E-MAIL</Text>
                 <View style={style.boxInput}>
                     <TextInput
-                    style={style.input}
-                    value={email}
-                    onChangeText={(e)=>setemail(e)}
+                        style={style.input}
+                        value={email}
+                        onChangeText={setEmail}
+                        keyboardType="email-address"
+                        autoCapitalize="none"
                     />
-                    <MaterialIcons
-                    name='email'
-                    size={20}
-                    color={themas.colors.gray} 
-                    />
+                    <MaterialIcons name='email' size={20} color={themas.colors.gray} />
                 </View>
+
                 <Text style={style.titleInput}>SENHA</Text>
                 <View style={style.boxInput}>
                     <TextInput
-                    style={style.input}
-                    value={password}
-                    onChangeText={setpassoword}
+                        style={style.input}
+                        value={password}
+                        onChangeText={setPassword}
+                        secureTextEntry
                     />
-                    <MaterialIcons
-                    name='remove-red-eye'
-                    size={20}
-                    color={themas.colors.gray} 
-                    />
+                    <MaterialIcons name='remove-red-eye' size={20} color={themas.colors.gray} />
                 </View>
             </View>
 
             <View style={style.boxBottom}>
-                <TouchableOpacity style={style.button} onPress={()=>getLogin()}>
-                    {loading?<ActivityIndicator/>:<Text style={style.textButton}>Entrar</Text>}
+                <TouchableOpacity style={style.button}>
+                    <Text style={style.textButton}>Entrar</Text>
                 </TouchableOpacity>
+
+                {/* Texto de rodapé agora posicionado dentro do boxBottom */}
+                <Text style={style.textBottom}>
+                    Não tem conta? <Text style={{ color: themas.colors.primary }}>Crie agora!</Text>
+                </Text>
             </View>
-            <Text style={style.textBottom}>Não tem conta? <Text style={{color:themas.colors.primary}}>Crie agora!</Text></Text>
         </View>
-    )
+    );
 }
