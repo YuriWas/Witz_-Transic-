@@ -17,6 +17,8 @@ import { themas } from "../../global/themes";
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    // 1. Novo estado para controlar a visibilidade da senha
+    const [showPassword, setShowPassword] = useState(true);
 
     return (
         <View style={style.container}>
@@ -50,9 +52,21 @@ export default function Login() {
                         style={style.input}
                         value={password}
                         onChangeText={setPassword}
-                        secureTextEntry
+                        // 2. O secureTextEntry agora depende do estado
+                        secureTextEntry={showPassword}
                     />
-                    <MaterialIcons name='remove-red-eye' size={20} color={themas.colors.gray} />
+                    {/* 3. Ícone envolto em um botão para alternar a visibilidade */}
+                    <TouchableOpacity 
+                        onPress={() => setShowPassword(!showPassword)}
+                        activeOpacity={0.7}
+                    >
+                        <MaterialIcons 
+                            // 4. Troca o ícone dinamicamente
+                            name={showPassword ? 'visibility-off' : 'remove-red-eye'} 
+                            size={20} 
+                            color={themas.colors.gray} 
+                        />
+                    </TouchableOpacity>
                 </View>
             </View>
 
@@ -61,7 +75,6 @@ export default function Login() {
                     <Text style={style.textButton}>Entrar</Text>
                 </TouchableOpacity>
 
-                {/* Texto de rodapé agora posicionado dentro do boxBottom */}
                 <Text style={style.textBottom}>
                     Não tem conta? <Text style={{ color: themas.colors.primary }}>Crie agora!</Text>
                 </Text>
