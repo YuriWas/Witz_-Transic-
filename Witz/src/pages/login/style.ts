@@ -17,7 +17,6 @@ export const style = StyleSheet.create({
         justifyContent: 'center' 
     },
     boxMid: {
-        height: height / 4,
         width: '100%',
         paddingHorizontal: 37,
     },
@@ -25,11 +24,11 @@ export const style = StyleSheet.create({
         height: height / 3,
         width: '100%',
         alignItems: 'center',
-        justifyContent: 'flex-start', // Alinha botão e rodapé no topo do boxBottom
-        paddingTop: 20
+        justifyContent: 'flex-start',
+        paddingTop: 30
     },
     logo: {
-        width: 300,
+        width: 400,
         height: 300,
         transform: [{ translateY: 20 }] 
     },
@@ -38,7 +37,7 @@ export const style = StyleSheet.create({
         fontSize: 28,
         color: '#000',
         marginTop: 5,
-        transform: [{ translateY: -50 }] // Mantido seu ajuste de subir o texto principal
+        transform: [{ translateY: -50 }]
     },
     titleInput: {
         marginLeft: 5,
@@ -63,6 +62,16 @@ export const style = StyleSheet.create({
         height: '100%',
         paddingLeft: 5
     },
+    forgotPasswordContainer: {
+        alignItems: 'flex-start',
+        marginTop: 10,
+        paddingLeft: 209
+    },
+    textForgotPassword: {
+        color: themas.colors.primary,
+        fontSize: 15,
+        fontWeight: 'bold'
+    },
     button: {
         width: 250,
         height: 50,
@@ -77,10 +86,18 @@ export const style = StyleSheet.create({
         color: "#ffffff",
         fontWeight: 'bold'
     },
-    textBottom: {
-       fontSize: 16,
-       color: themas.colors.gray,
-       marginTop: 35, // Espaço base em relação ao botão
-       transform: [{ translateY: -15 }] // Sobe o texto em direção ao botão
+    boxBottomText: {
+        flexDirection: 'row',
+        marginTop: 35,
+        alignItems: 'center'
     },
+    textBottom: {
+        fontSize: 16,
+        color: themas.colors.gray,
+    },
+    textCreateNow: {
+        fontSize: 16,
+        color: themas.colors.primary,
+        fontWeight: 'bold'
+    }
 });

@@ -1,11 +1,11 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
-import { useNavigation } from '@react-navigation/native'; // Importe o hook
+import { useNavigation } from '@react-navigation/native';
 import { style } from "./style";
 import Logo from '../../assets/Logo_nome_texto.png';
 
 export default function Initial() {
-    const navigation = useNavigation(); // Inicialize a navegação
+    const navigation = useNavigation();
 
     return (
         <View style={style.container}>

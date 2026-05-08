@@ -13,13 +13,12 @@ export const style = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         paddingHorizontal: 40,
-        marginTop: -100, // Subida controlada
+        marginTop: -100,
     },
     boxTop: {
         width: '100%',
         alignItems: 'center',
         justifyContent: 'center',
-        // Força um espaço de 40 pixels abaixo da logo
         paddingBottom: 40, 
     },
     logo: {
@@ -30,7 +29,6 @@ export const style = StyleSheet.create({
         width: '100%',
         alignItems: 'center',
         justifyContent: 'center',
-        // Força um espaço de 50 pixels entre o texto e o botão
         paddingBottom: 50, 
     },
     title: {
@@ -39,7 +37,6 @@ export const style = StyleSheet.create({
         color: themas.colors.primary,
         textAlign: 'center',
         lineHeight: 34,
-        // Espaço entre o título e a descrição
         marginBottom: 15, 
     },
     description: {

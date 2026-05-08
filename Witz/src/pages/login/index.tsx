@@ -17,11 +17,11 @@ import { themas } from "../../global/themes";
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    // 1. Novo estado para controlar a visibilidade da senha
     const [showPassword, setShowPassword] = useState(true);
 
     return (
         <View style={style.container}>
+            {/* Bloco Superior */}
             <View style={style.boxTop}>
                 <View style={{ alignItems: 'center' }}>
                     <Image
@@ -33,6 +33,7 @@ export default function Login() {
                 </View>
             </View>
 
+            {/* Bloco Central */}
             <View style={style.boxMid}>
                 <Text style={style.titleInput}>ENDEREÇO DE E-MAIL</Text>
                 <View style={style.boxInput}>
@@ -42,6 +43,7 @@ export default function Login() {
                         onChangeText={setEmail}
                         keyboardType="email-address"
                         autoCapitalize="none"
+                        placeholder="exemplo@email.com"
                     />
                     <MaterialIcons name='email' size={20} color={themas.colors.gray} />
                 </View>
@@ -52,32 +54,39 @@ export default function Login() {
                         style={style.input}
                         value={password}
                         onChangeText={setPassword}
-                        // 2. O secureTextEntry agora depende do estado
                         secureTextEntry={showPassword}
                     />
-                    {/* 3. Ícone envolto em um botão para alternar a visibilidade */}
                     <TouchableOpacity 
                         onPress={() => setShowPassword(!showPassword)}
                         activeOpacity={0.7}
                     >
                         <MaterialIcons 
-                            // 4. Troca o ícone dinamicamente
                             name={showPassword ? 'visibility-off' : 'remove-red-eye'} 
                             size={20} 
                             color={themas.colors.gray} 
                         />
                     </TouchableOpacity>
                 </View>
+
+                <TouchableOpacity style={style.forgotPasswordContainer} activeOpacity={0.6}>
+                    <Text style={style.textForgotPassword}>Esqueci minha senha</Text>
+                </TouchableOpacity>
             </View>
 
             <View style={style.boxBottom}>
-                <TouchableOpacity style={style.button}>
+                <TouchableOpacity style={style.button} activeOpacity={0.8}>
                     <Text style={style.textButton}>Entrar</Text>
                 </TouchableOpacity>
 
-                <Text style={style.textBottom}>
-                    Não tem conta? <Text style={{ color: themas.colors.primary }}>Crie agora!</Text>
-                </Text>
+                <View style={style.boxBottomText}>
+                    <Text style={style.textBottom}>Não tem conta? </Text>
+                    <TouchableOpacity 
+                        activeOpacity={0.6} 
+                        onPress={() => console.log('Navegar para Registro')}
+                    >
+                        <Text style={style.textCreateNow}>Crie agora!</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         </View>
     );
